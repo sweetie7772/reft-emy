@@ -7,427 +7,24 @@
       content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes"
     />
     <title>ТОП ИГР 2026 — Social Casino</title>
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      body {
-        background-color: rgb(17 17 17 / var(--tw-bg-opacity, 1));
-        background-image: radial-gradient(
-          circle at 15% 30%,
-          #1a1f2c 1.2px,
-          transparent 1.2px
-        );
-        background-size: 32px 32px;
-        font-family:
-          "Comic Neue", "Comic Sans MS", "Chalkboard SE", "Marker Felt",
-          "Segoe UI", cursive;
-        padding: 25px 20px 40px;
-        color: #fff2e0;
-      }
-
-      .page-wrap {
-        max-width: 1350px;
-        margin: 0 auto;
-      }
-
-      /* БЕГУЩАЯ СТРОКА */
-      .marquee-wrap {
-        background: repeating-linear-gradient(110deg, #ffc857, #ffb129);
-        padding: 10px 0;
-        margin-bottom: 40px;
-        box-shadow:
-          8px 8px 0 #7a3e0a,
-          0 5px 15px rgba(0, 0, 0, 0.4);
-        border: 3px solid #fff0b5;
-        transform: rotate(0.2deg);
-        overflow: hidden;
-    
-      }
-      .marquee {
-        font-family: "Comic Neue", "Comic Sans MS", cursive;
-        font-weight: 900;
-        font-size: 1.5rem;
-        white-space: nowrap;
-        display: inline-block;
-        animation: scrollText 40s linear infinite;
-        letter-spacing: 2px;
-        text-shadow: 3px 3px 0 #a35112;
-        color: #2f200b;
-      }
-      .marquee span {
-        display: inline-block;
-        padding: 0 40px;
-        font-size: 1.6rem;
-      }
-      @keyframes scrollText {
-        0% {
-          transform: translateX(0%);
-        }
-        100% {
-          transform: translateX(-50%);
-        }
-      }
-
-      /* Хедер */
-      .hero {
-        text-align: center;
-        margin-bottom: 45px;
-      }
-      .hero h1 {
-        font-size: 3.3rem;
-        font-weight: 900;
-        background: linear-gradient(130deg, #ffd966, #ffa01e);
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-        text-shadow: 6px 6px 0 #1e1608;
-        letter-spacing: 2px;
-      }
-      .hero h2 {
-        font-size: 1.6rem;
-        background: #000000aa;
-        display: inline-block;
-        padding: 6px 28px;
-        margin-top: 15px;
-        border: 2px solid #ffb347;
-        font-weight: bold;
-        border-radius: 40px;
-      }
-
-      /* Сетка карточек */
-      .games-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 32px;
-        margin-bottom: 50px;
-      }
-
-      /* БАЗОВЫЙ СТИЛЬ КАРТОЧКИ (стиль из 2 кода, но каждый экземпляр уникален) */
-      .game-card {
-        border-radius: 16px;
-        overflow: hidden;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-        transition:
-          transform 0.2s ease,
-          box-shadow 0.2s ease;
-        font-family: "Segoe UI", Arial, sans-serif;
-        display: flex;
-        flex-direction: column;
-        background: #e9e9e9; /* базовый фон, но переопределяется инлайн-стилями */
-      }
-      .game-card:hover {
-        transform: translateY(-6px);
-        box-shadow: 0 18px 35px rgba(0, 0, 0, 0.6);
-      }
-
-      .card-header {
-        padding: 12px;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-      }
-      .card-logo {
-        width: 50px;
-        height: 50px;
-        border-radius: 10px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: bold;
-        font-size: 24px;
-        background: #1e1a0c;
-        box-shadow: inset 0 0 0 2px currentColor;
-      }
-      .card-title {
-        font-weight: bold;
-        font-size: 20px;
-      }
-      .card-rating {
-        font-size: 13px;
-      }
-
-      .card-bonus {
-        text-align: center;
-        padding: 14px;
-        font-weight: bold;
-        font-size: 18px;
-        letter-spacing: 1px;
-      }
-
-      .card-content {
-        padding: 15px;
-        background: #e9e9e9;
-      }
-
-      .slots-text {
-        font-weight: bold;
-        font-size: 14px;
-        margin-bottom: 5px;
-        color: #1f1a0c;
-      }
-
-      .progress-bar-bg {
-        height: 10px;
-        background: #ccc;
-        border-radius: 2px;
-        overflow: hidden;
-        margin-bottom: 15px;
-      }
-      .progress-fill {
-        height: 100%;
-      }
-
-      .payments-row {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 6px;
-        margin-bottom: 15px;
-      }
-      .pay-item {
-        border: 2px solid #000;
-        padding: 4px 10px;
-        font-size: 11px;
-        font-weight: bold;
-        background: #fff;
-        color: #111;
-        font-family: monospace;
-      }
-
-      .features-list {
-        margin-bottom: 15px;
-      }
-      .feature-item {
-        display: flex;
-        align-items: center;
-        margin-bottom: 8px;
-        font-size: 13px;
-        color: #1f1a0c;
-      }
-      .check-mark {
-        width: 20px;
-        height: 20px;
-        border-radius: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-right: 8px;
-        font-weight: bold;
-        font-size: 14px;
-      }
-
-      .card-btn {
-        text-align: center;
-        padding: 14px;
-        font-weight: bold;
-        font-size: 18px;
-        border: 3px solid #000;
-        cursor: pointer;
-        box-shadow: 3px 3px 0 #000;
-        transition: 0.05s linear;
-        margin-bottom: 12px;
-        font-family: inherit;
-        background: #ffd400;
-      }
-      .card-btn:active {
-        transform: translate(2px, 2px);
-        box-shadow: 1px 1px 0 #000;
-      }
-
-      .login-block {
-        text-align: center;
-        font-size: 11px;
-        color: #2b2b2b;
-        margin-top: 6px;
-      }
-      .social-icons {
-        display: flex;
-        justify-content: center;
-        gap: 10px;
-        margin-top: 6px;
-      }
-      .social-icon {
-        width: 32px;
-        height: 32px;
-        background: #fff;
-        border: 2px solid #000;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-weight: bold;
-        font-size: 14px;
-        cursor: pointer;
-        transition: 0.05s linear;
-      }
-      .social-icon:active {
-        transform: scale(0.96);
-      }
-
-      /* Телеграм блок */
-      .telegram-block {
-        background: #0f1725dd;
-        border: 3px dashed #ffc857;
-        text-align: center;
-        padding: 20px;
-        margin: 30px 0 40px;
-        font-size: 1.5rem;
-        font-weight: bold;
-        
-      }
-      .telegram-block span {
-        background: #2a9d8f;
-        padding: 6px 22px;
-        font-size: 1rem;
-        margin-left: 12px;
-        border-radius: 40px;
-        cursor: pointer;
-      }
-
-      /* Футер */
-      .comic-footer {
-        margin-top: 20px;
-        padding: 20px 25px;
-        background: #0c101ccc;
-        border-top: 5px solid #ffc857;
-        border-bottom: 3px solid #ffa01e;
-        text-align: center;
-        
-      }
-      .footer-links {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 28px;
-        margin-bottom: 18px;
-      }
-      .footer-link {
-        font-family: "Comic Neue", monospace;
-        font-weight: bold;
-        font-size: 1rem;
-        background: #1f293b;
-        padding: 6px 24px;
-        cursor: pointer;
-        transition: 0.05s linear;
-        color: #ffdd99;
-        text-decoration: none;
-        display: inline-block;
-        border: 1px solid #ffb347;
-        box-shadow: 3px 3px 0 #02060c;
-        border-radius: 40px 8px 40px 8px;
-      }
-      .footer-link:hover {
-        transform: translate(-1px, -1px);
-        background: #ffb347;
-        color: #1f1a0c;
-        box-shadow: 5px 5px 0 #5a2e0a;
-      }
-      .footer-copy {
-        font-size: 0.7rem;
-        opacity: 0.75;
-        margin-top: 12px;
-      }
-
-      /* Модалки */
-      .modal {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.92);
-        z-index: 1000;
-        align-items: center;
-        justify-content: center;
-      }
-      .modal-content {
-        background: #191e2b;
-        max-width: 650px;
-        width: 90%;
-        max-height: 85vh;
-        overflow-y: auto;
-        border: 4px solid #ffc456;
-        box-shadow: 15px 15px 0 #03050a;
-        padding: 24px 28px;
-        position: relative;
-        font-family: "Segoe UI", "Comic Neue", sans-serif;
-        color: #f2e5c2;
-        border-radius: 28px 8px 32px 8px;
-      }
-      .modal-content h1 {
-        font-size: 1.8rem;
-        background: linear-gradient(110deg, #ffdf8a, #ffa93d);
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-        margin-bottom: 20px;
-        border-left: 8px solid #ffb347;
-        padding-left: 18px;
-      }
-      .modal-content h2 {
-        color: #ffcf7a;
-        margin-top: 20px;
-      }
-      .close-modal {
-        position: sticky;
-        top: 0;
-        float: right;
-        background: #ff5e5e;
-        border: none;
-        font-size: 1.8rem;
-        font-weight: bold;
-        width: 44px;
-        height: 44px;
-        cursor: pointer;
-        color: white;
-        box-shadow: 3px 3px 0 #771111;
-        border-radius: 12px 0 16px 0;
-      }
-
-      @media (max-width: 1024px) and (min-width: 769px) {
-        .games-grid {
-          grid-template-columns: repeat(2, 1fr);
-          gap: 24px;
-        }
-      }
-      @media (max-width: 768px) {
-        .games-grid {
-          grid-template-columns: repeat(2, 1fr);
-          gap: 20px;
-        }
-        .hero h1 {
-          font-size: 2.2rem;
-        }
-      }
-      @media (max-width: 580px) {
-        .games-grid {
-          grid-template-columns: 1fr;
-        }
-      }
-    </style>
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <div class="page-wrap">
-      <div class="marquee-wrap">
-        <div class="marquee">
-          <span></span>
-            🔥 ЭКСКЛЮЗИВНО ДЛЯ СНГ 🔥 ВЫБИРАЙ СКОРЕЕ 🔥 ЛИЦЕНЗИОННЫЕ ПРОЕКТЫ 🔥
-            БЫСТРЫЕ ВЫПЛАТЫ 🔥 ЗАБИРАЙ БОНУСЫ 🔥 🔥 ЭКСКЛЮЗИВНО ДЛЯ СНГ 🔥
-            ВЫБИРАЙ СКОРЕЕ 🔥 ЛИЦЕНЗИОННЫЕ ПРОЕКТЫ 🔥 БЫСТРЫЕ ВЫПЛАТЫ 🔥 ЗАБИРАЙ
-            БОНУСЫ 🔥
-          </span>
-          <span>
-            🔥 ЭКСКЛЮЗИВНО ДЛЯ СНГ 🔥 ВЫБИРАЙ СКОРЕЕ 🔥 ЛИЦЕНЗИОННЫЕ ПРОЕКТЫ 🔥
-            БЫСТРЫЕ ВЫПЛАТЫ 🔥 ЗАБИРАЙ БОНУСЫ 🔥 🔥 ЭКСКЛЮЗИВНО ДЛЯ СНГ 🔥
-            ВЫБИРАЙ СКОРЕЕ 🔥 ЛИЦЕНЗИОННЫЕ ПРОЕКТЫ 🔥 БЫСТРЫЕ ВЫПЛАТЫ 🔥 ЗАБИРАЙ
-            БОНУСЫ 🔥
-          </span>
-        </div>
+    <div class="marquee-wrap">
+      <div class="marquee">
+        <span
+          >⚡ ТОП ИГР 2026 ⚡ БОНУСЫ ДО 700 FS ⚡ SOCIAL CASINO ⚡ БЫСТРЫЕ
+          ВЫВОДЫ ⚡ РОЗЫГРЫШИ В ТЕЛЕГРАМ ⚡⚡ ТОП ИГР 2026 ⚡ БОНУСЫ ДО 700 FS
+          ⚡ SOCIAL CASINO ⚡ БЫСТРЫЕ ВЫВОДЫ ⚡ РОЗЫГРЫШИ В ТЕЛЕГРАМ ⚡</span
+        >
+        <span
+          >⚡ ТОП ИГР 2026 ⚡ БОНУСЫ ДО 700 FS ⚡ SOCIAL CASINO ⚡ БЫСТРЫЕ
+          ВЫВОДЫ ⚡ РОЗЫГРЫШИ В ТЕЛЕГРАМ ⚡⚡ ТОП ИГР 2026 ⚡ БОНУСЫ ДО 700 FS
+          ⚡ SOCIAL CASINO ⚡ БЫСТРЫЕ ВЫВОДЫ ⚡ РОЗЫГРЫШИ В ТЕЛЕГРАМ ⚡</span
+        >
       </div>
-
+    </div>
+    <div class="page-wrap">
       <div class="hero">
         <h1>ТОП ИГР 2026</h1>
         <h2>ВЫБИРАЙ СКОРЕЕ</h2>
@@ -437,7 +34,9 @@
 
       <div class="telegram-block">
         📱 ТЕЛЕГРАМ &nbsp;➜&nbsp; РОЗЫГРЫШИ ПРИЗОВ
-        <span>УЧАСТВОВАТЬ</span>
+        <a href=" https://t.me/+g4oAqI9joP43ZjAy">
+          <span>УЧАСТВОВАТЬ</span>
+        </a>
       </div>
 
       <div class="comic-footer">
@@ -461,118 +60,107 @@
     </div>
 
     <script>
-      // КАЖДАЯ КАРТОЧКА ПОЛНОСТЬЮ НЕЗАВИСИМА — уникальные цвета, прогресс, фичи, бонусы
+      // ========== НАСТРОЙКА КАРТОЧЕК ==========
       const gamesData = [
         {
           name: "FUGU",
           stars: 4.9,
           online: 1497,
-          bonus: "700 FS + 250% БОНУС",
+          bonus: "600 FS в Gates of Olympus",
           placesLeft: "ОСТАЛОСЬ МЕСТ: 8 ИЗ 100",
-          progressWidth: "85%",
+          progressWidth: "80%",
           features: ["Безлимит на вывод", "Высокий RTP", "Ежедневный рейкбек"],
           btnText: "ПОЛУЧИТЬ",
-          // уникальная цветовая схема #1
-          headerBg: "#FFD966",
-          headerTextColor: "#2d2b1f",
-          logoColor: "#c47e2a",
+          headerBg: "#ffe500",
+          headerTextColor: "#000000",
           logoBg: "#2a2416",
-          bonusBg: "#1a1a1a",
-          bonusTextColor: "#FFD966",
-          progressFillColor: "#e34d4d",
-          btnBg: "#FFD966",
+          logoColor: "#c47e2a",
+          bonusBg: "#000000",
+          bonusTextColor: "#ffe500",
+          progressFillColor: "#ffe500",
+          btnBg: "#ffe500",
           btnTextColor: "#1f1a0c",
-          checkBg: "#FFD966",
-        },
-        {
-          name: "BEEF",
-          stars: 4.7,
-          online: 1194,
-          bonus: "600 FS + 250% БОНУС",
-          placesLeft: "ОСТАЛОСЬ МЕСТ: 14 ИЗ 100",
-          progressWidth: "70%",
-          features: ["Безлимит на вывод", "Высокий RTP", "Быстрая регистрация"],
-          btnText: "ИГРАТЬ",
-          headerBg: "#FF8C42",
-          headerTextColor: "#2c1a0a",
-          logoColor: "#c95a0f",
-          logoBg: "#2c1a0a",
-          bonusBg: "#2c1a0a",
-          bonusTextColor: "#FFB347",
-          progressFillColor: "#FF8C42",
-          btnBg: "#FF8C42",
-          btnTextColor: "#2c1a0a",
-          checkBg: "#FF8C42",
+          checkBg: "#ffe500",
+          buttonLink: " http://fuguway37.com/c8bdc32f5?activation_code=MINE100",
+          logoSvg: `<img src="img/FUGU.png" style="width:100%; height:100%; object-fit:cover;">`,
         },
         {
           name: "MARTIN",
           stars: 4.8,
           online: 1179,
-          bonus: "600 FS + 250% БОНУС",
+          bonus: "600 FS в Gates of Olympus",
           placesLeft: "ОСТАЛОСЬ МЕСТ: 21 ИЗ 100",
-          progressWidth: "65%",
+          progressWidth: "21%",
           features: [
             "Безлимит на вывод",
             "Крупные турниры",
             "Ежедневный рейкбек",
           ],
           btnText: "ПОЛУЧИТЬ",
-          headerBg: "#5FAD56",
+          headerBg: "#00e676",
           headerTextColor: "#f0f7e6",
-          logoColor: "#3c8c2e",
           logoBg: "#1e3a1a",
-          bonusBg: "#0f2d0a",
-          bonusTextColor: "#C5E99B",
-          progressFillColor: "#5FAD56",
-          btnBg: "#5FAD56",
+          logoColor: "#3c8c2e",
+          bonusBg: "#000000",
+          bonusTextColor: "#00e676",
+          progressFillColor: "#00e676",
+          btnBg: "#00e676",
           btnTextColor: "#1f2a0a",
-          checkBg: "#5FAD56",
+          checkBg: "#00e676",
+          buttonLink:
+            " https://martin-route-six.com/c09a07844?activation_code=MINE100",
+          logoSvg: `<img src="img/MARTIN.png" style="width:100%; height:100%; object-fit:cover;">`,
         },
         {
-          name: "IRWIN",
+          name: "BEEF",
+          stars: 4.7,
+          online: 1194,
+          bonus: "600 FS в Gates of Olympus",
+          placesLeft: "ОСТАЛОСЬ МЕСТ: 14 ИЗ 100",
+          progressWidth: "14%",
+          features: ["Безлимит на вывод", "Высокий RTP", "Быстрая регистрация"],
+          btnText: "ИГРАТЬ",
+          headerBg: "#b088ff",
+          headerTextColor: "#2c1a0a",
+          logoBg: "#2c1a0a",
+          logoColor: "#c95a0f",
+          bonusBg: "#000000",
+          bonusTextColor: "#b088ff",
+          progressFillColor: "#b088ff",
+          btnBg: "#b088ff",
+          btnTextColor: "#2c1a0a",
+          checkBg: "#b088ff",
+          buttonLink:
+            " https://beef-route-six.com/c14040c13?activation_code=MINE100",
+          logoSvg: `<img src="img/BEEF.png" style="width:100%; height:100%; object-fit:cover;">`,
+        },
+        {
+          name: "VODKA",
           stars: 4.6,
           online: 767,
-          bonus: "500 FS + 250% БОНУС",
+          bonus: "600 FS в Gates of Olympus",
           placesLeft: "ОСТАЛОСЬ МЕСТ: 34 ИЗ 100",
-          progressWidth: "50%",
+          progressWidth: "34%",
           features: ["Эксклюзивный дизайн", "Высокий RTP", "VIP Программа"],
           btnText: "ИГРАТЬ",
-          headerBg: "#9B6A9C",
+          headerBg: "#ff3366",
           headerTextColor: "#f2e6ff",
-          logoColor: "#6b3e6e",
           logoBg: "#2e1a30",
-          bonusBg: "#2e1a30",
-          bonusTextColor: "#D4A5D9",
-          progressFillColor: "#9B6A9C",
-          btnBg: "#9B6A9C",
-          btnTextColor: "#ffffff",
-          checkBg: "#9B6A9C",
-        },
-        {
-          name: "FLAGMAN",
-          stars: 4.9,
-          online: 1312,
-          bonus: "500 FS + 250% БОНУС",
-          placesLeft: "ОСТАЛОСЬ МЕСТ: 12 ИЗ 100",
-          progressWidth: "80%",
-          features: ["Безлимит на вывод", "Высокий RTP", "Удобное приложение"],
-          btnText: "ЗАБИРАЮТ!",
-          headerBg: "#E9B35F",
-          headerTextColor: "#2b2214",
-          logoColor: "#b87c2e",
-          logoBg: "#2b1f0e",
-          bonusBg: "#2b1f0e",
-          bonusTextColor: "#FFD58C",
-          progressFillColor: "#E9B35F",
-          btnBg: "#E9B35F",
-          btnTextColor: "#2b2214",
-          checkBg: "#E9B35F",
+          logoColor: "#6b3e6e",
+          bonusBg: "#000000",
+          bonusTextColor: "#ff3366",
+          progressFillColor: "#ff3366",
+          btnBg: "#ff3366",
+          btnTextColor: "#1f2a0a",
+          checkBg: "#ff3366",
+          buttonLink: "https://go232.com?id=17033&modal=reg",
+          logoSvg: `<img src="img/VODKA.jpg" style="width:100%; height:100%; object-fit:cover;">`,
         },
       ];
 
       const paymentMethods = ["СБП", "MIR", "VISA", "MC", "CRYPTO", "PIASTRIX"];
 
-      // Класс для живого онлайна (каждая карточка обновляется отдельно)
+      // онлайна
       class OnlineCounter {
         constructor(element, initialValue) {
           this.element = element;
@@ -613,27 +201,23 @@
       const counters = [];
 
       gamesData.forEach((game, idx) => {
-        // Создаём карточку
         const card = document.createElement("div");
         card.className = "game-card";
-        // Фон карточки (светлый как в оригинале, но можно задать индивидуально)
         card.style.background = "#e9e9e9";
 
-        // HEADER с уникальным цветом фона
+        // ХЕДЕР
         const headerDiv = document.createElement("div");
         headerDiv.className = "card-header";
         headerDiv.style.backgroundColor = game.headerBg;
         headerDiv.style.color = game.headerTextColor;
 
-        // Логотип (первая буква)
         const logoDiv = document.createElement("div");
         logoDiv.className = "card-logo";
-        logoDiv.innerText = game.name.charAt(0);
-        logoDiv.style.color = game.logoColor;
+        //
+        logoDiv.innerHTML = game.logoSvg || `<span>🎮</span>`;
         logoDiv.style.backgroundColor = game.logoBg;
-        logoDiv.style.boxShadow = `inset 0 0 0 2px ${game.logoColor}`;
+        logoDiv.style.boxShadow = `inset 0 0 0 2px ${game.logoColor || "#FFB347"}`;
 
-        // Текстовая часть хедера
         const headerText = document.createElement("div");
         const ratingStars = getStarString(game.stars);
         headerText.innerHTML = `
@@ -644,7 +228,7 @@
         headerDiv.appendChild(logoDiv);
         headerDiv.appendChild(headerText);
 
-        // БОНУС уникальный
+        // БОНУС
         const bonusDiv = document.createElement("div");
         bonusDiv.className = "card-bonus";
         bonusDiv.innerText = game.bonus;
@@ -654,14 +238,11 @@
         // КОНТЕНТ
         const contentDiv = document.createElement("div");
         contentDiv.className = "card-content";
-        contentDiv.style.background = "#e9e9e9";
 
-        // Места
         const slotsDiv = document.createElement("div");
         slotsDiv.className = "slots-text";
         slotsDiv.innerText = game.placesLeft;
 
-        // Прогресс бар
         const progressWrap = document.createElement("div");
         progressWrap.className = "progress-bar-bg";
         const progressFill = document.createElement("div");
@@ -670,7 +251,6 @@
         progressFill.style.backgroundColor = game.progressFillColor;
         progressWrap.appendChild(progressFill);
 
-        // Платежные методы (одинаковые для всех, но стилизованы под карточку — можно оставить единообразно)
         const paymentsDiv = document.createElement("div");
         paymentsDiv.className = "payments-row";
         paymentMethods.forEach((pay) => {
@@ -680,7 +260,6 @@
           paymentsDiv.appendChild(paySpan);
         });
 
-        // Список преимуществ
         const featuresDiv = document.createElement("div");
         featuresDiv.className = "features-list";
         game.features.forEach((feat) => {
@@ -698,31 +277,32 @@
           featuresDiv.appendChild(featureRow);
         });
 
-        // Кнопка действия с уникальными цветами
         const actionBtn = document.createElement("div");
         actionBtn.className = "card-btn";
         actionBtn.innerText = game.btnText;
         actionBtn.style.backgroundColor = game.btnBg;
         actionBtn.style.color = game.btnTextColor;
         actionBtn.style.border = `3px solid ${game.btnTextColor === "#ffffff" ? "#000" : "#000"}`;
+
         actionBtn.addEventListener("click", (e) => {
           e.preventDefault();
-          window.open(
-            `https://example.com/${game.name.toLowerCase()}`,
-            "_blank",
-          );
+          if (game.buttonLink) {
+            window.open(game.buttonLink, "_blank");
+          } else {
+            console.warn(`Ссылка для ${game.name} не указана!`);
+            alert(
+              `Для ${game.name} не настроена ссылка. Добавьте поле buttonLink.`,
+            );
+          }
         });
 
-        // Блок входа (соц иконки)
         const loginBlock = document.createElement("div");
         loginBlock.className = "login-block";
-        loginBlock.innerHTML = `ВХОД В 1 КЛИК:
+        loginBlock.innerHTML = `ВХОД В 1 КЛИК
             <div class="social-icons">
-                <div class="social-icon">TG</div>
-                <div class="social-icon">G</div>
+                
             </div>`;
 
-        // Сборка контента
         contentDiv.appendChild(slotsDiv);
         contentDiv.appendChild(progressWrap);
         contentDiv.appendChild(paymentsDiv);
@@ -736,19 +316,14 @@
 
         container.appendChild(card);
 
-        // Настройка динамического онлайна для этой карточки (уникальный счетчик)
         const onlineSpan = headerText.querySelector(`.online-count-${idx}`);
         if (onlineSpan) {
           const counter = new OnlineCounter(onlineSpan, game.online);
           counter.startFluctuation();
           counters.push(counter);
         }
-
-        // Дополнительно: уникальная тень для кнопки (сделаем под цвет)
-        actionBtn.style.boxShadow = `3px 3px 0 #000`;
       });
 
-      // Защита: если какие-то онлайн-счетчики не привязались (резерв)
       setTimeout(() => {
         document.querySelectorAll('[class*="online-count-"]').forEach((el) => {
           if (!counters.some((c) => c.element === el)) {
@@ -764,7 +339,7 @@
         counters.forEach((c) => c.stop()),
       );
 
-      // Модальные окна (без изменений)
+      // Модалки
       const modal = document.getElementById("legalModal");
       const modalTextDiv = document.getElementById("modalText");
       const closeModalBtn = document.getElementById("closeModalBtn");
@@ -797,7 +372,7 @@
         .getElementById("openCookiesBtn")
         .addEventListener("click", () => openModal(cookiesHTML));
 
-      // Анимация появления карточек (каждая независимо)
+      // Анимация карточек
       const cards = document.querySelectorAll(".game-card");
       cards.forEach((card, i) => {
         card.style.opacity = "0";
