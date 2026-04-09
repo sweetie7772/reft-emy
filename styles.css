@@ -79,7 +79,7 @@
 }
 
 body {
-  background: #000000;
+  background: #000000fd;
   background-image: radial-gradient(
     circle at 15% 30%,
     #1a1f2c 1.2px,
@@ -499,13 +499,13 @@ body {
   border: 1px solid #000000;
 }
 
-@media (max-width: 100%) and (min-width: 100%) {
+@media (max-width: 1024px) and (min-width: 769px) {
   .games-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 24px;
   }
 }
-@media (max-width: 100%) {
+@media (max-width: 768px) {
   .games-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
@@ -514,7 +514,7 @@ body {
     font-size: 2.2rem;
   }
 }
-@media (max-width: 100%) {
+@media (max-width: 580px) {
   .games-grid {
     grid-template-columns: 1fr;
   }
