@@ -1,11 +1,9 @@
-/* ========== ГЛОБАЛЬНЫЙ СБРОС ========== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* ГЛАВНОЕ: запрещаем горизонтальный скролл, НО вертикальный работает */
 html {
   overflow-x: hidden !important;
   overflow-y: scroll !important;
@@ -33,7 +31,6 @@ body {
   min-height: 100vh;
 }
 
-/* Все контейнеры не могут вылезти за границы */
 .page-wrap,
 .marquee-wrap,
 .games-grid,
