@@ -90,6 +90,10 @@ body {
   font-weight: 500;
   padding: 25px 20px 40px;
   color: #fff2e0;
+  max-width: 100%;
+  overflow-x: hidden;
+  margin: 0;
+  overscroll-behavior: none;
 }
 
 .page-wrap {
