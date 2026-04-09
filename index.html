@@ -81,7 +81,7 @@
           btnBg: "#ffe500",
           btnTextColor: "#1f1a0c",
           checkBg: "#ffe500",
-          buttonLink: " http://fuguway37.com/c8bdc32f5?activation_code=MINE100",
+          buttonLink: "http://fuguway38.com/c8bdc32f5?activation_code=MINE100",
           logoSvg: `<img src="img/FUGU.png" style="width:100%; height:100%; object-fit:cover;">`,
         },
         {
@@ -192,7 +192,7 @@
         let full = Math.floor(rating);
         let half = rating - full >= 0.5;
         let stars = "★".repeat(full);
-        if (half) stars += "½";
+        if (half) stars += "☆";
         stars = stars.padEnd(5, "☆");
         return stars;
       }
@@ -222,7 +222,7 @@
         const ratingStars = getStarString(game.stars);
         headerText.innerHTML = `
             <div class="card-title" style="color: ${game.headerTextColor};">${game.name}</div>
-            <div class="card-rating" style="color: ${game.headerTextColor};">${ratingStars} ${game.stars} • <span class="online-count-${idx}">${game.online}</span> онлайн</div>
+            <div class="card-rating" style="color: ${game.headerTextColor};">${ratingStars} ${game.stars} • <span class="dot-online"></span> <span class="online-count-${idx}">${game.online}</span> онлайн</div>
         `;
 
         headerDiv.appendChild(logoDiv);

@@ -115,7 +115,7 @@ body {
   font-size: 1.5rem;
   white-space: nowrap;
   display: inline-block;
-  animation: scrollText 18s linear infinite;
+  animation: scrollText 40s linear infinite;
   letter-spacing: 2px;
   color: #ffe500;
 }
@@ -480,6 +480,15 @@ body {
   box-shadow: 3px 3px 0 #771111;
   border-radius: 12px 0 16px 0;
   font-family: "Space Grotesk", monospace;
+}
+
+.dot-online {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background-color: #03f70b;
+  border-radius: 50%;
+  border: 1px solid #000000;
 }
 
 @media (max-width: 1024px) and (min-width: 769px) {
