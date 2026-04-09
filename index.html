@@ -4,10 +4,14 @@
     <meta charset="UTF-8" />
     <meta
       name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"
     />
     <title>ТОП ИГР 2026 — Social Casino</title>
     <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <div class="marquee-wrap">
@@ -34,7 +38,11 @@
 
       <div class="telegram-block">
         📱 ТЕЛЕГРАМ &nbsp;➜&nbsp; РОЗЫГРЫШИ ПРИЗОВ
-        <a href=" https://t.me/+g4oAqI9joP43ZjAy">
+        <a
+          href="https://t.me/+g4oAqI9joP43ZjAy"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <span>УЧАСТВОВАТЬ</span>
         </a>
       </div>
@@ -59,7 +67,6 @@
     </div>
 
     <script>
-      // ========== НАСТРОЙКА КАРТОЧЕК ==========
       const gamesData = [
         {
           name: "FUGU",
@@ -81,7 +88,7 @@
           btnTextColor: "#1f1a0c",
           checkBg: "#ffe500",
           buttonLink: "http://fuguway38.com/c8bdc32f5?activation_code=MINE100",
-          logoSvg: `<img src="img/FUGU.png" style="width:100%; height:100%; object-fit:cover;">`,
+          logoSvg: `<img src="img/FUGU.png" style="width:100%; height:100%; object-fit:cover;" alt="FUGU logo" onerror="this.src='https://placehold.co/50x50/2a2416/ffe500?text=F'">`,
         },
         {
           name: "MARTIN",
@@ -107,8 +114,8 @@
           btnTextColor: "#1f2a0a",
           checkBg: "#00e676",
           buttonLink:
-            " https://martin-route-six.com/c09a07844?activation_code=MINE100",
-          logoSvg: `<img src="img/MARTIN.png" style="width:100%; height:100%; object-fit:cover;">`,
+            "https://martin-route-six.com/c09a07844?activation_code=MINE100",
+          logoSvg: `<img src="img/MARTIN.png" style="width:100%; height:100%; object-fit:cover;" alt="MARTIN logo" onerror="this.src='https://placehold.co/50x50/1e3a1a/00e676?text=M'">`,
         },
         {
           name: "BEEF",
@@ -131,7 +138,7 @@
           checkBg: "#b088ff",
           buttonLink:
             "https://beef-route-six.com/c14040c13?activation_code=MINE100",
-          logoSvg: `<img src="img/BEEF.png" style="width:100%; height:100%; object-fit:cover;">`,
+          logoSvg: `<img src="img/BEEF.png" style="width:100%; height:100%; object-fit:cover;" alt="BEEF logo" onerror="this.src='https://placehold.co/50x50/2c1a0a/b088ff?text=B'">`,
         },
         {
           name: "VODKA",
@@ -153,13 +160,12 @@
           btnTextColor: "#1f2a0a",
           checkBg: "#ff3366",
           buttonLink: "https://go232.com?id=17033&modal=reg",
-          logoSvg: `<img src="img/VODKA.jpg" style="width:100%; height:100%; object-fit:cover;">`,
+          logoSvg: `<img src="img/VODKA.jpg" style="width:100%; height:100%; object-fit:cover;" alt="VODKA logo" onerror="this.src='https://placehold.co/50x50/2e1a30/ff3366?text=V'">`,
         },
       ];
 
       const paymentMethods = ["СБП", "MIR", "VISA", "MC", "CRYPTO", "PIASTRIX"];
 
-      // онлайна
       class OnlineCounter {
         constructor(element, initialValue) {
           this.element = element;
@@ -202,9 +208,7 @@
       gamesData.forEach((game, idx) => {
         const card = document.createElement("div");
         card.className = "game-card";
-        card.style.background = "#e9e9e9";
 
-        // ХЕДЕР
         const headerDiv = document.createElement("div");
         headerDiv.className = "card-header";
         headerDiv.style.backgroundColor = game.headerBg;
@@ -212,7 +216,6 @@
 
         const logoDiv = document.createElement("div");
         logoDiv.className = "card-logo";
-        //
         logoDiv.innerHTML = game.logoSvg || `<span>🎮</span>`;
         logoDiv.style.backgroundColor = game.logoBg;
         logoDiv.style.boxShadow = `inset 0 0 0 2px ${game.logoColor || "#FFB347"}`;
@@ -227,14 +230,12 @@
         headerDiv.appendChild(logoDiv);
         headerDiv.appendChild(headerText);
 
-        // БОНУС
         const bonusDiv = document.createElement("div");
         bonusDiv.className = "card-bonus";
         bonusDiv.innerText = game.bonus;
         bonusDiv.style.backgroundColor = game.bonusBg;
         bonusDiv.style.color = game.bonusTextColor;
 
-        // КОНТЕНТ
         const contentDiv = document.createElement("div");
         contentDiv.className = "card-content";
 
@@ -281,26 +282,20 @@
         actionBtn.innerText = game.btnText;
         actionBtn.style.backgroundColor = game.btnBg;
         actionBtn.style.color = game.btnTextColor;
-        actionBtn.style.border = `3px solid ${game.btnTextColor === "#ffffff" ? "#000" : "#000"}`;
+        actionBtn.style.border = `3px solid #000`;
 
         actionBtn.addEventListener("click", (e) => {
           e.preventDefault();
           if (game.buttonLink) {
             window.open(game.buttonLink, "_blank");
           } else {
-            console.warn(`Ссылка для ${game.name} не указана!`);
-            alert(
-              `Для ${game.name} не настроена ссылка. Добавьте поле buttonLink.`,
-            );
+            alert(`Для ${game.name} не настроена ссылка.`);
           }
         });
 
         const loginBlock = document.createElement("div");
         loginBlock.className = "login-block";
-        loginBlock.innerHTML = `ВХОД В 1 КЛИК
-            <div class="social-icons">
-                
-            </div>`;
+        loginBlock.innerHTML = `ВХОД В 1 КЛИК<div class="social-icons"></div>`;
 
         contentDiv.appendChild(slotsDiv);
         contentDiv.appendChild(progressWrap);
@@ -312,7 +307,6 @@
         card.appendChild(headerDiv);
         card.appendChild(bonusDiv);
         card.appendChild(contentDiv);
-
         container.appendChild(card);
 
         const onlineSpan = headerText.querySelector(`.online-count-${idx}`);
@@ -322,17 +316,6 @@
           counters.push(counter);
         }
       });
-
-      setTimeout(() => {
-        document.querySelectorAll('[class*="online-count-"]').forEach((el) => {
-          if (!counters.some((c) => c.element === el)) {
-            let val = parseInt(el.innerText) || 1000;
-            const newCounter = new OnlineCounter(el, val);
-            newCounter.startFluctuation();
-            counters.push(newCounter);
-          }
-        });
-      }, 100);
 
       window.addEventListener("beforeunload", () =>
         counters.forEach((c) => c.stop()),
@@ -371,7 +354,7 @@
         .getElementById("openCookiesBtn")
         .addEventListener("click", () => openModal(cookiesHTML));
 
-      // Анимация карточек
+      // Плавная анимация появления карточек
       const cards = document.querySelectorAll(".game-card");
       cards.forEach((card, i) => {
         card.style.opacity = "0";
