@@ -92,8 +92,11 @@ body {
   color: #fff2e0;
   max-width: 100%;
   overflow-x: hidden;
+  overflow-y: auto;
   margin: 0;
-  overscroll-behavior: none;
+  padding: 0;
+  position: relative;
+  padding-top: 20px;
 }
 
 .page-wrap {
